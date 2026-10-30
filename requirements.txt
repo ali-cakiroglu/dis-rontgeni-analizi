@@ -1,0 +1,8 @@
+# Önce PyTorch'u ekran kartı (CUDA) destekli kurun:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+# Sonra:
+#   pip install -r requirements.txt
+ultralytics>=8.4
+gradio>=6
+pillow
+numpy

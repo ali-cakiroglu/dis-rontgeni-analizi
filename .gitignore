@@ -1,0 +1,11 @@
+# Veri, görüntü ve model ağırlıkları depoya konmaz
+data/
+weights/
+runs/
+ornekler/
+sonuclar/*.jpg
+*.zip
+*.pt
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
