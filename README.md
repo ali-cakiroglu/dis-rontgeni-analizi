@@ -191,6 +191,20 @@ Tarama için düşük eşik, kesin konuşmak için yüksek eşik.
 Kanal tedavisi kolay (dolgu maddesi röntgende parlak ve belirgin), çürük zor: panoramik röntgende küçük,
 düşük kontrastlı ve hekimler arasında bile tartışmalı olabiliyor. Düşük çürük skorları bu işin doğasında var.
 
+## Şekiller
+
+`python sekiller.py` rapor şekillerini `sekiller/` klasörüne üretir:
+
+- `sekil1_akis.png` — sistemin akışı (kullanım ve eğitim adımları)
+- `sekil2_map50.png` — iç test ve dış doğrulamada sınıf bazında mAP50 (değerler `weights/*.json` ölçüm dosyalarından okunur)
+- `sekil3_ornek_cikti.png` — test setinden bir röntgende modelin çıktısı. Veri setinin görüntüsünü içerdiği için bu depoda yoktur.
+
+![Sistemin akışı](sekiller/sekil1_akis.png)
+
+![Sınıf bazında mAP50](sekiller/sekil2_map50.png)
+
+> Veri: Mureșanu, Hedeșiu, Iacob, Zenodo, DOI: 10.5281/zenodo.15487430, CC BY 4.0.
+
 ## Sınırlar
 
 - Model **panoramik** röntgen için eğitildi. Periapikal/bitewing (tek diş) filmlerde güvenilir çalışmaz.
