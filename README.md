@@ -1,7 +1,8 @@
-# Diş Röntgeni Analizi — Eğitim Amaçlı Çürük ve Kanal Tedavisi İşaretleme
+# Diş Röntgeni Analizi — Diş Hekimliği Öğrencilerine Destek Amaçlı Yapay Zekâ
 
-Panoramik diş röntgeninde **çürükleri** ve **kanal tedavili dişleri** bulup yuvarlak içine alan,
-her bulgu için güven skoru veren YOLO modeli + web arayüzü.
+Diş hekimliği öğrencilerinin panoramik röntgen değerlendirmesine destek olan yapay zekâ aracı:
+röntgende 14 bulguyu (varsayılan olarak **çürük** ve **kanal tedavisi**) işaretleyen YOLO modeli,
+her işaretin güven skoru ve modelin ölçülmüş başarısını gösteren web arayüzü.
 
 - Çürük kırmızı, kanal tedavisi mavi elipsle işaretlenir; yanında `2. Çürük %78` gibi etiket çıkar.
 - İstersen dolgu, kron/köprü, implant, periapikal lezyon, gömülü diş gibi bulgular da gösterilebilir (toplam 14 sınıf).
