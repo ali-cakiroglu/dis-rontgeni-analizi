@@ -1,0 +1,80 @@
+{
+  "modeller": {
+    "baseline": [
+      "weights\\best_yolo26s.pt",
+      null
+    ],
+    "karisik": [
+      "weights\\best_yolo26s.pt",
+      "weights\\curuk.pt"
+    ],
+    "yontem": [
+      "weights\\yolo26m.pt",
+      "yedek_calisan_surum\\curuk2.pt"
+    ]
+  },
+  "B": 2000,
+  "tohum": 2242,
+  "bolumler": {
+    "test": {
+      "roentgen": 100,
+      "AP50": {
+        "baseline": 0.4865089626068339,
+        "karisik": 0.37002591660201645,
+        "yontem": 0.4794357937373448
+      },
+      "karsilastirma": {
+        "yontem-baseline": {
+          "fark": -0.00707316886948911,
+          "GA95": [
+            -0.0687205447997009,
+            0.0471127601776512
+          ],
+          "p_tek_yonlu": 0.589,
+          "p_cift_yonlu": 0.822,
+          "gecerli_yineleme": 2000
+        },
+        "yontem-karisik": {
+          "fark": 0.10940987713532835,
+          "GA95": [
+            0.02129100319305181,
+            0.1988354957104552
+          ],
+          "p_tek_yonlu": 0.006,
+          "p_cift_yonlu": 0.012,
+          "gecerli_yineleme": 2000
+        }
+      }
+    },
+    "external": {
+      "roentgen": 180,
+      "AP50": {
+        "baseline": 0.3228763093056144,
+        "karisik": 0.0738326590823345,
+        "yontem": 0.39470149510351205
+      },
+      "karsilastirma": {
+        "yontem-baseline": {
+          "fark": 0.07182518579789765,
+          "GA95": [
+            0.0161031699354565,
+            0.1253654472164034
+          ],
+          "p_tek_yonlu": 0.0045,
+          "p_cift_yonlu": 0.009,
+          "gecerli_yineleme": 2000
+        },
+        "yontem-karisik": {
+          "fark": 0.32086883602117755,
+          "GA95": [
+            0.2539555949444564,
+            0.3833296217613326
+          ],
+          "p_tek_yonlu": 0.0,
+          "p_cift_yonlu": 0.0,
+          "gecerli_yineleme": 2000
+        }
+      }
+    }
+  }
+}
