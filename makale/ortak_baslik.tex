@@ -1,0 +1,24 @@
+%% ortak_baslik.tex -- iki iskelette de aynı: paketler, \sonuc makrosu, örnek uyarısı.
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{sekiller/}{./}}   %% şekil sekiller/ klasöründe ya da kökte (düz gönderim zip'i) bulunur
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{url}
+
+%% --- Sonuç makroları: \sonuc{anahtar}. Değer yoksa PDF'te kalın "??anahtar" çıkar (sessiz geçmez). ---
+\makeatletter
+\newcommand{\sonucyaz}[2]{\expandafter\gdef\csname sonuc@#1\endcsname{#2}}
+\newcommand{\sonuc}[1]{\@ifundefined{sonuc@#1}{\textbf{??\detokenize{#1}}}{\csname sonuc@#1\endcsname}}
+\makeatother
+\input{sonuclar}   %% sonuc_uret.py üretir (elle doldurulmaz); başka yerde sonuç sayısı yazılmaz
+
+%% --- Örnek uyarısı: kendi metninizi yazınca govde.tex'in başındaki \ornekuyarisi satırını siliniz. ---
+\newcommand{\ornekuyarisi}{\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\footnotesize
+\textbf{ÖRNEK İSKELET.} Bu belgedeki cümleler ve sayılar yalnız biçimi göstermek içindir; gerçek
+bir çalışmanın sonucu değildir. Kendi verinizle değiştiriniz, sonra bu kutuyu siliniz.}}\par\medskip}

@@ -1,0 +1,139 @@
+%% ============================================================================
+%% EEM4011 -- Q1 MAKALE İSKELETİ (Elsevier: elsarticle)
+%% Kimler için: Biomedical Signal Processing and Control, Computers in Biology and Medicine,
+%%   Computer Methods and Programs in Biomedicine, Computerized Medical Imaging and Graphics ...
+%% Kullanım: zip dosyasını Overleaf'e yükleyiniz (New project -> Existing project (.zip)); derleyici pdfLaTeX; Recompile.
+%% ÖNCE DERGİ (HAFTA 1-A): sınırlar (kelime, özet, highlights, beyanlar) derginin "Guide for Authors"
+%%   sayfasından alınır; aşağıdaki sayılar tipik değerlerdir, derginizinki farklı olabilir.
+%% Haftalar: HAFTA 1-A dergi · 1-B katkı · 2-A Giriş · 2-B Yöntem · 3-A deney planı · 3-B Sonuçlar ·
+%%   4-A şekil ve tablo · 4-B Tartışma · 5-A ön yüz ve beyanlar · 5-B gönderim öncesi denetim.
+%% HAFTA 5-B: gönderimden önce KONTROL.md listesini uygulayınız; deneme hakemliğine derlenmiş PDF'i yükleyiniz.
+%% Dosyalar: main.tex (ön yüz + beyanlar) | govde.tex (bölümler) | ortak_baslik.tex (paketler)
+%%   sonuclar.csv + veri_ozeti.csv -> sonuc_uret.py -> sonuclar.tex | sekil_uret.py -> sekiller/Figure_2.pdf
+%%   refs.bib | highlights.txt | KONTROL.md
+%% DİKKAT: bu dosya yalnız ön yüzü ve beyanları içerir; bölümler govde.tex dosyasındadır. Makaleyi birine
+%%   okutacaksanız (deneme hakemliği dahil) main.tex dosyasını değil, derlenmiş PDF'i veriniz.
+%% ============================================================================
+\documentclass[preprint,12pt]{elsarticle}   %% gönderim biçimi: tek sütun. Hakem sürümü için: review
+%% Sayfa sınırı olan dergide SON düzeni bir kez deneyiniz: \documentclass[final,5p,times,twocolumn]{elsarticle}
+\biboptions{numbers,sort&compress}
+\usepackage{lineno}
+\input{ortak_baslik}
+\newenvironment{genistablo}{\begin{table}[t]}{\end{table}}   %% tek sütun: normal tablo
+
+\journal{Journal of Dentistry}   %% HAFTA 1-A: hedef dergi (yedek: Diagnostics, MDPI). Kart: makale/DERGI_KARTI.md
+%% Journal of Dentistry kılavuzu (25.11.2026): Original Research Report en çok ~20 sayfa (şekil ve tablo dahil);
+%%   özet en çok 250 kelime, atıf yok; 1-7 anahtar kelime; highlights 3-5 madde, <=85 karakter (önerilir);
+%%   ÇİFT KÖR hakemlik: gönderim sürümünde ad, kurum, teşekkür ve depo linki bu dosyadan çıkar, başlık sayfası ayrı dosya.
+
+\begin{document}
+\begin{frontmatter}   %% başlık, yazar, özet, anahtar kelimeler bu ortamın İÇİNDE olmalıdır
+
+%% HAFTA 5-A -- Başlık: en çok ~15 kelime; nesne + yöntem + neyin ölçüldüğü. Kısaltma ve "novel" yok.
+\title{Subject-wise Evaluation of a Simple Classifier for Abnormal Heart Sound Screening}
+
+%% Yazarlar: öğrenci + danışman(lar). Adres ve e-posta kurumunuzunki olmalıdır.
+%% Dergi çift kör hakemlik istiyorsa (dergi kartınız) ad, kurum ve kendi çalışmanıza atıflar gönderim sürümünde gizlenir.
+\author[kku]{Ad Soyad\corref{cor1}}
+\ead{e-posta@kurum.edu.tr}
+\author[kku]{Danışman Ad Soyad}
+\cortext[cor1]{Corresponding author}
+\affiliation[kku]{organization={Department of Electrical and Electronics Engineering, University Name},
+                  city={City}, country={Country}}
+
+%% HAFTA 5-A -- Özet: TEK paragraf, derginin sınırı (çoğu Elsevier dergisinde en çok 250 kelime), atıf yok,
+%% tanımsız kısaltma yok. Sıra: (1) problem (2) amaç (3) veri ve yöntem, sayılarıyla (4) ana sonuç, aralıkla
+%% (5) koşul/sınır (6) tek cümlelik anlam. Sayılar \sonuc ile. Olumsuz ya da belirsiz sonucu da yazınız.
+%% Gönderim sistemindeki özet kutusuna PDF'teki metni kopyalayınız (\sonuc makrosu yapıştırmayınız).
+%% YÖN: 'rose', 'improved' gibi kelimeleri sonucunuzun yönüne göre seçiniz; düşük değeri iyi olan metrikte (MAE, RMSE)
+%% sonuc_uret.py'de IYI_YON = -1 yapınız ve 'fell', 'had a lower error' gibi yazınız (fark.ort o zaman eksidir).
+\begin{abstract}
+Automated analysis of heart sounds could support screening, but reported performance depends
+on how recordings are split between training and testing. This study compares a
+single-feature rule with a logistic-regression classifier under a strictly subject-wise
+protocol. We used \sonuc{veri.kayit} recordings from \sonuc{veri.kisi} subjects of an open
+database and evaluated the rule, the classifier and one re-run published method on the same
+\sonuc{kat.n} folds. Balanced accuracy rose from \sonuc{base.ort} for the rule to \sonuc{yeni.ort}
+for the classifier; the mean paired difference was \sonuc{fark.ort} (95\% confidence interval
+\sonuc{fark.alt} to \sonuc{fark.ust}, paired sign-flip test $p \sonuc{fark.p}$). The classifier
+did not differ clearly from the published method (difference \sonuc{yfark.ort}, 95\% confidence
+interval \sonuc{yfark.alt} to \sonuc{yfark.ust}). The result holds for one database and one
+assignment of subjects to folds. A transparent classifier is therefore a reasonable
+baseline-level reference, not an improvement over published methods, under subject-wise evaluation.
+\end{abstract}
+%% Dergi YAPILANDIRILMIŞ özet istiyorsa (ör. CMPB) yukarıdaki paragrafı derginin başlıklarına bölünüz:
+%% \textbf{Background and Objective:} ... \textbf{Methods:} ... \textbf{Results:} ... \textbf{Conclusions:} ...
+
+%% Highlights AYRI dosyadır (highlights.txt): 3-5 madde, her biri boşluklar dahil en çok 85 karakter, sonuç sayısı yok.
+
+\begin{keyword}   %% 1-7 anahtar kelime; başlıktaki kelimeleri tekrar etmeyen, aranabilir terimler
+heart sound \sep phonocardiogram \sep subject-wise cross-validation \sep balanced accuracy \sep screening
+\end{keyword}
+
+\end{frontmatter}
+
+%% \linenumbers   %% dergi satır numarası istiyorsa açınız
+
+\input{govde}
+
+%% ============================================================================
+%% BEYANLAR (HAFTA 5-A). Başlıkların ADI ve SIRASI derginin kılavuzundan alınır; hepsi DOĞRU olmalıdır.
+%% ============================================================================
+\section*{CRediT authorship contribution statement}
+\textbf{Ad Soyad:} Conceptualization, Methodology, Software, Formal analysis, Writing -- original draft.
+\textbf{Danışman Ad Soyad:} Supervision, Writing -- review \& editing.
+%% Roller CRediT listesinden seçilir; yalnız GERÇEKTEN yapılan roller yazılır.
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal
+relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Funding}
+This research did not receive any specific grant from funding agencies in the public,
+commercial, or not-for-profit sectors.
+%% Destek varsa (ör. TÜBİTAK 2209-A) kurum adı ve proje numarası yazılır; yoksa yukarıdaki cümle kalır.
+
+\section*{Ethics statement}
+This study used only publicly available, de-identified recordings~\cite{Oliveira2022data},
+distributed under the Open Data Commons Attribution License~v1.0; no new data were collected
+from human participants, and ethical approval was therefore not required. The original data collection
+was approved by an institutional review board, and participants younger than 21 years were included with a signed
+parental consent form where appropriate, as described with the dataset~\cite{Oliveira2022data}.
+%% Bu son cümleyi yalnız veri setinin sayfası ya da tanıtım makalesi bunu yazıyorsa bırakınız (CirCor için PhysioNet sayfasının
+%% Methods ve Ethics bölümleri yazıyor, 14.11.2026'da okundu); yazmıyorsa "consent was not obtained by the authors because the
+%% data are public and de-identified" deyiniz.
+%% Lisansın ADI veri setinin kendi sayfasından okunur; kendi verinizinkini yazınız (tahmin etmeyiniz).
+%% Verinin özgün toplanışındaki etik onay ve onam, veri tanıtım makalesinde yazıyorsa ona atıf veriniz.
+%% KENDİ kaydınızı aldıysanız bu cümle YANLIŞ olur: etik kurul adı, karar numarası ve
+%% aydınlatılmış onam yazılmak zorundadır. Etik onay yoksa açık veri kullanınız.
+
+\section*{Data and code availability}
+The recordings (version~1.0.3) are available from PhysioNet~\cite{Oliveira2022data,Pollard2026}
+under the Open Data Commons Attribution License~v1.0 and are not redistributed with this paper.
+The code, the results file and the scripts that produce all reported values and figures are
+available at \url{https://github.com/kullanici/depo} (tag \texttt{v1.0}).
+%% Veri SÜRÜMÜ ve LİSANSI yazılır. Ham veri setini deponuza YÜKLEMEYİNİZ: kaynağına link verip atıflayınız;
+%% depoda yalnız kodunuz ve sonuç dosyanız durur. Kimlik taşıyan bilgi (DICOM üstverisi, yüz, ad, tarih)
+%% makaleye ve depoya girmez. Kayıt ya da sözleşme isteyen veride sözleşmenin paylaşım koşullarını okuyunuz.
+%% Makaleye görüntü koyuyorsanız lisansı yayına izin vermeli ve kaynağı altyazıda yazılmalıdır.
+%% Depo linki ve etiketi (tag) GERÇEK olmalıdır; etiket, sonuçları üreten sürümü gösterir.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work the authors used [TOOL NAME, version] to turn the authors'
+own notes, code and results into English draft text for the Introduction, Methods, Results and
+Discussion; to suggest wording for the title, abstract, keywords, highlights and figure captions;
+to correct the authors' plotting and diagram code; and to adapt the authors' results script. The
+tool did not produce data, numbers, references, figures or interpretations. After using this
+tool, the authors reviewed and edited the content as needed and take full responsibility for the
+content of the published article.
+%% Bu beyan DOĞRU ve EKSİKSİZ olmalıdır: sohbete hangi bölümde ne yaptırdıysanız onu yazınız; yaptırmadığınızı siliniz.
+%% Bu derste herkes sohbet kullandığı için "yalnız dil düzeltmesi" cümlesi YANLIŞTIR.
+%% Kod ve betik yardımını Methods'ta da bir cümleyle anınız (Elsevier: araştırmada kullanılan yapay zekâ Methods'ta yazılır).
+%% Elsevier şekil kuralı: yapay zekâ desteği alan diyagram altyazısında, veri grafiği Methods'ta aracın adı, sürümü ve geliştiricisiyle
+%% beyan edilir; araştırma görüntüsü yapay zekâyla üretilmez ya da değiştirilmez. Bu derste şekil ve görüntü yapay zekâya
+%% ürettirilmez; yalnız sizin çizim kodunuz düzelttirilebilir. Başlık metni derginin kılavuzundaki ile birebir aynı olmalıdır.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\end{document}

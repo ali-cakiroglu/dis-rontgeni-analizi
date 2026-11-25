@@ -1,0 +1,5 @@
+Highlights  (3-5 madde; her madde boşluklar dahil en çok 85 karakter; sonuç sayısı yok; ayrı dosya olarak yüklenir)
+
+A simple classifier was more accurate than a single-feature heart sound rule.
+Its difference from a re-run published method was not resolved on the same folds.
+All comparisons used subject-wise folds: no person is in training and test.
